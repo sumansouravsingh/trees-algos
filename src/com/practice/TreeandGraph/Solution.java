@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Solution {
 
-	
+
 	public Tree insertNode(Tree root,int data)
 	{
 		if(root==null)
@@ -22,7 +22,7 @@ public class Solution {
 			root.right=insertNode(root.right,data);
 		return root;
 	}
-	
+
 	public void printInorder(Tree root)
 	{
 		if(root==null)
@@ -39,7 +39,7 @@ public class Solution {
 		postOrder(root.right);
 		System.out.print(root.data+" ");
 	}
-	
+
 	public void preOrder(Tree root)
 	{
 		if(root==null)
@@ -48,7 +48,7 @@ public class Solution {
 		preOrder(root.left);
 		preOrder(root.right);
 	}
-	
+
 	//Level Order Traversal
 	public void printLevelOrder(Tree root)
 	{
@@ -64,7 +64,7 @@ public class Solution {
 			if(temp.right!=null)q.add(temp.right);
 		}
 	}
-	
+
 	//Get Height of a binary Tree(can also be considered as Max Depth)
 	public int getTreeHeight(Tree root)
 	{
@@ -72,7 +72,7 @@ public class Solution {
 			return -1;
 		return 1+Math.max(getTreeHeight(root.right), getTreeHeight(root.left));
 	}
-	
+
 	//Check if a tree is balanced(length of right and left subtree should always differ by atmost 1)
 	public boolean isBalanced(Tree root)
 	{
@@ -91,7 +91,7 @@ public class Solution {
 	{
 		return checkHeight(root)!=Integer.MIN_VALUE;
 	}
-	
+
 	public int checkHeight(Tree root){
 		if(root==null)
 			return -1;
@@ -105,7 +105,7 @@ public class Solution {
 			return Integer.MIN_VALUE;
 		else return Math.max(h, h1)+1;
 	}
-	
+
 	//Check if a tree is BST
 	public boolean isProperBST(Tree root, int min, int max)
 	{
@@ -118,7 +118,7 @@ public class Solution {
 			res=false;
 		return res;
 	}
-	
+
 	private String searchElem(Tree root, int n) {
 		if(root==null)
 			return "Not Present";
@@ -138,7 +138,7 @@ public class Solution {
 		else
 			return getMinValue(root.left);
 	}
-	
+
 	private Tree getMaxValue(Tree root)
 	{
 		if(root.right==null)
@@ -146,7 +146,7 @@ public class Solution {
 		else
 			return getMaxValue(root.right);
 	}
-	
+
 	//Search Element in BST
 	private Tree findElem(Tree root, int n) {
 		if(root==null)
@@ -184,8 +184,8 @@ public class Solution {
 			}
 			return suc;
 		}
-	} 
-	
+	}
+
 	//Find Predecessor of a node in BST in Inorder Traversal
 	private Tree getPredecessor(Tree root, int data)
 	{
@@ -211,7 +211,7 @@ public class Solution {
 			return pre;
 		}
 	}
-	
+
 	//Delete a Node from BST
 	public Tree deleteNode(Tree root, int data)
 	{
@@ -238,36 +238,8 @@ public class Solution {
 		}
 		return root;
 	}
-	
-	//Chindi TopView
-	public void printTopView(Tree root)
-	{
-		if(root==null)
-			return;
-		if(root.left!=null)
-			printLeft(root.left);
-		if(root.right!=null)
-			printLeft(root.right);
-	}
 
-	public void printLeft(Tree root)
-	{
-		if(root==null)
-			return;
-		System.out.print(root.data);
-		if(root.left!=null)
-			printLeft(root.left);
-	}
-	
-	public void printRight(Tree root)
-	{
-		if(root==null)
-			return;
-		System.out.print(root.data);
-		if(root.right!=null)
-			printLeft(root.right);
-	}
-	
+
 	//Print LCA of BST
 	public Tree LCA(Tree root,int data1, int data2)
 	{
@@ -280,7 +252,7 @@ public class Solution {
 		else
 			return root;
 	}
-	
+
 	//Find LCA of any binary tree(Check if data is both on right or left. if l!=r. this means both are on opposite side of root. thus root is lca
 	public Tree LCABT(Tree root, int data1, int data2)
 	{
@@ -302,13 +274,13 @@ public class Solution {
 			return true;
 		else return checkContains(root.left,data)|| checkContains(root.right, data);
 	}
-	
+
 	//Print all elements in same vertical line
 	public Tree verticalLine(Tree root, int level,HashMap<Integer, ArrayList<Integer>> map)
 	{
 		if(root==null)
 			return null;
-		
+
 		Tree temp = verticalLine(root.left, --level,map);
 		if(temp==null)
 			level++;
@@ -326,14 +298,14 @@ public class Solution {
 		}
 		return verticalLine(root.right, ++level, map);
 	}
-	
+
 	public void printResult(HashMap ht) {
 		Set<Integer> i = ht.keySet();
 		for (int keys : i) {
 			System.out.print(ht.get(keys));
 		}
 	}
-	
+
 	//Convert a sorted array to a height based BST;
 	public Tree arrToTree(int arr[])
 	{
@@ -357,7 +329,7 @@ public class Solution {
 		root.right = arrToTree(rarr);
 		return root;
 	}
-	
+
 	//Check if one tree(r) is subtree of another(root)
 	public boolean checkSubTree(Tree root, Tree r)
 	{
@@ -369,7 +341,7 @@ public class Solution {
 		}
 		return checkSubTree(root.left, r)||checkSubTree(root.right, r);
 	}
-	
+
 	public boolean compareTrees(Tree root, Tree r)
 	{
 		if(root==null&&r==null)
@@ -380,13 +352,13 @@ public class Solution {
 			return false;
 		else return compareTrees(root.left, r.left)||compareTrees(root.right, r.right) ;
 	}
-	
+
 	/*
 	public String printAllCombo(Tree root)
 	{
 		return null;
 	}*/
-	
+
 	//Find the minimum depth in a tree
 	public int minDepth(Tree root) {
         if(root == null){
@@ -394,7 +366,7 @@ public class Solution {
         }
         LinkedList<Tree> nodes = new LinkedList<Tree>();
         LinkedList<Integer> counts = new LinkedList<Integer>();
- 
+
         nodes.add(root);
         counts.add(1);
         while(!nodes.isEmpty()){
@@ -403,12 +375,12 @@ public class Solution {
             if(curr.left == null && curr.right == null){
                 return count;
             }
- 
+
             if(curr.left != null){
                 nodes.add(curr.left);
                 counts.add(count+1);
             }
- 
+
             if(curr.right != null){
                 nodes.add(curr.right);
                 counts.add(count+1);
@@ -416,7 +388,7 @@ public class Solution {
         }
         return 0;
     }
-	
+
 	//Check whether tree has a path equal to a given variable(sum)
 	public boolean hasPath(Tree root, int sum){
 		if(root==null)
@@ -425,10 +397,10 @@ public class Solution {
 			return true;
 		else return hasPath(root.left,sum-root.data) || hasPath(root.right,sum-root.data);
 	}
-	
+
 	//Get number of Subtrees with n children.
 	public int getNumberofSubTree(Tree root, int n,ArrayList<Integer> list){
-		
+
 		if(root==null)
 			return 0;
 		if(root.left==null&&root.right==null)
@@ -440,7 +412,7 @@ public class Solution {
 		}
 		return total;
 	}
-	
+
 	//Get Top View of a Binary Tree
 	public void printTopViews(Tree root){
 		HashMap<Integer,Integer> map;
@@ -449,13 +421,13 @@ public class Solution {
 		for(Map.Entry<Integer, Integer> m: map.entrySet())
 			System.out.print(m.getValue()+" ");
 	}
-	
+
 	public HashMap<Integer,Integer> getTopView(Tree root, int level)
 	{
 		HashMap<Integer,Integer> list = new HashMap<Integer,Integer>();
 		if(root==null)
 		 return null;
-		
+
 		Queue<qStruct> q = new LinkedList<qStruct>();
 		q.add(new qStruct(level,root));
 		while(!q.isEmpty())
@@ -470,15 +442,15 @@ public class Solution {
 			if(s.node.right!=null)
 				q.add(new qStruct(s.level+1,s.node.right));
 		}
-		return list;		
+		return list;
 	}
-	
+
 	//Create a Binary Tree from Level Order and Inorder
 	public Tree createFromOrder(int level[],int in[], int start, int end)
 	{
 		if(start>end)
 			return null;
-		
+
 		int rootval= level[0];
 		Tree root = new Tree(rootval);
 		if(start==end)
@@ -490,7 +462,7 @@ public class Solution {
 		root.right=createFromOrder(right, in, ind+1, end);
 		return root;
 	}
-	
+
 	public int[] newLevelOrder(int[] inorder, int[] levelOrder, int iStart,int iEnd) {
 		int[] newlevel = new int[iEnd - iStart + 1];
 		int x = 0;
@@ -502,16 +474,16 @@ public class Solution {
 		}
 		return newlevel;
 	}
-	
+
 	public int findEleminArray(int arr[],int start,int end,int val)
 	{
 		for(int i=start;i<=end;i++)
 			if(arr[i]==val)
 				return i;
-		
+
 		return -1;
 	}
-	
+
 	//Invert a tree
 	public Tree invertTree(Tree root) {
         if(root==null)
@@ -524,7 +496,7 @@ public class Solution {
         return root;
     }
 	/*---------------------------------------- GRAPH FUNCTIONS ------------------------------------------------*/
-	
+
 	public void addEdge(Graph g, int v1,int v2)
 	{
 		g.list[v1].add(v2);
@@ -538,7 +510,7 @@ public class Solution {
 			if(!v[i])
 				DFSUtil(i,v,g);
 	}
-	
+
 	private void DFSUtil(int i, boolean[] v, Graph g) {
 		v[i]=true;
 		System.out.print(i+" ");
@@ -549,7 +521,7 @@ public class Solution {
 				DFSUtil(x, v, g);
 		}
 	}
-	
+
 	//BFS of a graph
 	private void BFS(Graph g, int i)
 	{
@@ -573,7 +545,7 @@ public class Solution {
 			}
 		}
 	}
-	
+
 	//Check if path Exists between 2 given nodes
 	public String pathExists(Graph g,int v1, int v2)
 	{
@@ -624,7 +596,7 @@ public class Solution {
 		}
 		return res;
 	}
-	
+
 	private void printTry(LinkedHashMap<Integer, Integer> mi, int y) {
 		// TODO Auto-generated method stub
 		StringBuilder s = new StringBuilder();
@@ -646,7 +618,7 @@ public class Solution {
 		Set<Integer> s = m.keySet();
 		for(int k:s)
 		{
-			
+
 			if(m.get(k).contains(x)){
 				x=k;
 			}
@@ -659,7 +631,7 @@ public class Solution {
 		{
 			if(y++>5)
 				break;
-			Set<Integer> i = m.keySet();	
+			Set<Integer> i = m.keySet();
 			for(int k:i)
 			{
 				if(m.get(k).contains(x)){
@@ -687,7 +659,7 @@ public class Solution {
 		root=s.insertNode(root, 7);
 		root=s.insertNode(root, 9);
 		int n=4;
-		
+
 		/*System.out.println("\n\nPreorder Traversal: - ");
 		s.preOrder(root);
 		System.out.println("\n\nPostorder Traversal: - ");
@@ -713,26 +685,26 @@ public class Solution {
 		s.printInorder(r);
 		System.out.println("\n\n"+s.checkSubTree(root, r.left.left));
 		System.out.println("\n\nMin depth= "+s.minDepth(root)+", Has sum: "+s.hasPath(root,23));
-		
+
 		s.printTopViews(root);
 		ArrayList<Integer> al=new ArrayList<>();
 		s.getNumberofSubTree(root,2, al);
-		
+
 		int[] level={ 1, 2, 3, 4, 5, 6, 7 };
 		int[] in={ 4, 2, 5, 1, 6, 3, 7 };
 		Tree temp = s.createFromOrder(level, in, 0, in.length-1);
 		System.out.println("\n\for test only");
 		s.printInorder(temp);
 		System.out.println("\n\nTotal Sub trees with 3 children= "+al.size());
-		
-		
+
+
 		System.out.println("In Order: ");
 		s.printInorder(root);
 		root = s.invertTree(root);
 		System.out.println("In Order: ");
 		s.printInorder(root);*/
-		
-		
+
+
 		Graph g = new Graph(10);
 		s.addEdge(g, 0, 1);
 		s.addEdge(g, 1, 2);
